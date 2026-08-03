@@ -15,7 +15,7 @@ const Subscriptions = () => {
     
     // Form State
     const [formData, setFormData] = useState({
-        name: '', price: '', frequency: 'monthly', category_id: '', payment_method: '', start_date: ''
+        name: '', price: '', frequency: 'monthly', category: '', payment_method: '', start_date: ''
     });
 
     const { data, isLoading } = useQuery({
@@ -35,7 +35,7 @@ const Subscriptions = () => {
             queryClient.invalidateQueries(['subscriptions']);
             queryClient.invalidateQueries(['renewals']);
             setIsModalOpen(false);
-            setFormData({ name: '', price: '', frequency: 'monthly', category_id: '', payment_method: '', start_date: '' });
+            setFormData({ name: '', price: '', frequency: 'monthly', category: '', payment_method: '', start_date: '' });
         }
     });
 
@@ -148,11 +148,11 @@ const Subscriptions = () => {
                             <div className="input-group">
                                 <label>Category</label>
                                 <Select 
-                                    value={formData.category_id} 
-                                    onChange={e => setFormData({...formData, category_id: e.target.value})}
+                                    value={formData.category}
+                                    onChange={e => setFormData({...formData, category: e.target.value})}
                                     options={[
                                         { value: '', label: 'Select a category' },
-                                        ...(categories || []).map(c => ({ value: c.id.toString(), label: c.name }))
+                                        ...(categories || []).map(c => ({ value: c.name, label: c.name }))
                                     ]}
                                 />
                             </div>
