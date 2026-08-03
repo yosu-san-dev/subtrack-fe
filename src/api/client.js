@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'https://subtrack-production-c31d.up.railway.app/api/v1';
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const apiClient = axios.create({
     baseURL: API_URL,
